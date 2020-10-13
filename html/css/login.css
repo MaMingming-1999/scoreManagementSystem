@@ -1,0 +1,113 @@
+.body-background {
+    width: 100%;
+    height: calc(100vh);
+    background-image: url("../image/loginBackground.gif");
+    background-size: cover;
+    background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    -o-background-size: cover;
+    background-position: center 0;
+}
+
+.title-login{
+    font-family: 方正小标宋简体;
+    font-weight: bolder;
+    color:#ffffff;
+    text-align: center;
+    padding-top: calc(5vh);
+    padding-bottom: calc(10vh);
+}
+
+.text-login{
+    width: 30%;
+    height: calc(50vh);
+    margin: 0 auto;
+    background-color: rgba(200,200,200,0.3);
+}
+.text-message{
+    padding-top: calc(10vh);
+    text-align: center;
+}
+.layui-input{
+    width: 90%;
+    background-color: rgba(200,200,200,0.4);
+    border: 1px solid rgba(200,200,200,0.6);
+}
+input::-webkit-input-placeholder{
+    color: #ffffff;
+}
+input::-moz-placeholder{
+    color: #ffffff;
+}
+input::-ms-input-placeholder{
+    color: #ffffff;
+}
+.layui-form-label{
+    color: #ffffff;
+    font-size: 18px;
+    font-family: 方正小标宋简体;
+}
+.layui-btn{
+    width: 30%;
+    text-align: center;
+    display:block;
+    margin:0 auto;
+    margin-top: calc(5vh);
+}
+.layui-tips{
+    text-align: center;
+    margin: 0 auto;
+    display:block;
+    color: #ffffff;
+    font-weight: bolder;
+}
+.layui-tips:link{
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: bolder;
+}
+.layui-tips:visited{
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: bolder;
+}
+.layui-tips:hover{
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: bolder;
+}
+.layui-tips:active{
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: bolder;
+}
+.layui-register{
+    color:#ffffff;
+}
+.text-message a{
+    color:#009688;
+    font-weight: bolder;
+}
+.text-message a:link{
+    color:#009688;
+    text-decoration: none;
+    font-weight: bolder;
+}
+.text-message a:visited{
+    color:#009688;
+    text-decoration: none;
+    font-weight: bolder;
+ }
+.text-message a:hover{
+    color:#009688;
+    text-decoration: none;
+    font-weight: bolder;
+}
+.text-message a:active{
+    color:#009688;
+    text-decoration: none;
+    font-weight: bolder;
+}
+input{
+    color:#ffffff;
+}
