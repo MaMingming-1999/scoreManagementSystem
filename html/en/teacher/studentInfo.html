@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>成绩管理系统 - 查看学生信息</title>
+    <link rel="stylesheet" href="../../resource/bootstrap-3.3.7-dist/css/bootstrap.css">
+    <link rel="stylesheet" href="../../resource/bootstrap-3.3.7-dist/css/bootstrap-theme.css">
+    <link rel="stylesheet" href="../../resource/layui-v2.5.6/layui/css/layui.css">
+    <link rel="stylesheet" href="../../css/common.css">
+</head>
+<body class="layui-layout-body">
+
+<div class="layui-layout layui-layout-admin">
+    <div class="layui-header">
+        <div class="layui-logo">成绩管理系统-教师端</div>
+        <ul class="layui-nav layui-layout-left">
+            <!--水平导航：显示用户名+个人信息+安全退出-->
+            <li class="layui-nav-item"><a href="index.html" id="goto-index">首页</a></li>
+        </ul>
+        <ul class="layui-nav layui-layout-right">
+            <img src="../../image/stuHead.jpg" class="layui-nav-img"/>
+            <span id="showUserName" style="margin-right: calc(5vh);">Avatar</span>
+            <li class="layui-nav-item" onclick="exitLogin()">退出登录</li>
+        </ul>
+    </div>
+
+    <!--垂直导航：显示个人信息+修改个人信息-->
+    <div class="layui-side layui-bg-black">
+        <div class="layui-side-scroll">
+            <ul class="layui-nav layui-nav-tree"  lay-filter="test">
+                <li class="layui-nav-item layui-nav-itemed">
+                    <a class="" href="javascript:">查询信息</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="studentInfo.html" class="layui-this">学生信息</a></dd>
+                        <dd><a href="course.html">课程信息</a></dd>
+                        <dd><a href="score.html">成绩信息</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item layui-nav-itemed">
+                    <a class="" href="javascript:">修改信息</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="enterScore.html">导入成绩信息</a></dd>
+                        <dd><a href="changeScore.html">修改成绩信息</a></dd>
+                    </dl>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="layui-body">
+        <!-- 内容主体区域 -->
+
+
+    </div>
+
+    <div class="layui-footer">
+        <!-- 底部固定区域 -->
+
+    </div>
+</div>
+
+
+
+</body>
+<script src="../../resource/jquery-3.5.1/jquery-3.5.1.js"></script>
+<script src="../../resource/bootstrap-3.3.7-dist/js/bootstrap.js"></script>
+<script src="../../resource/layui-v2.5.6/layui/layui.all.js"></script>
+</html>

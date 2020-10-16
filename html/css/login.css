@@ -15,7 +15,6 @@
     color:#ffffff;
     text-align: center;
     padding-top: calc(5vh);
-    padding-bottom: calc(10vh);
 }
 
 .text-login{
@@ -110,4 +109,28 @@ input::-ms-input-placeholder{
 }
 input{
     color:#ffffff;
+}
+.go-text{
+    margin: 0 auto;
+    text-align: center;
+    color: #ffffff;
+    margin-top: calc(5vh);
+    margin-bottom: calc(5vh);
+    font-family: 方正小标宋简体;
+}
+.go-text a:link{
+    text-decoration: none;
+    color: #ffffff;
+}
+.go-text a:visited{
+    text-decoration: none;
+    color: #ffffff;
+}
+.go-text a:hover{
+    text-decoration: none;
+    color: #ffffff;
+}
+.go-text a:active{
+    text-decoration: none;
+    color: #ffffff;
 }

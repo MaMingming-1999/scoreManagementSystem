@@ -10,15 +10,20 @@
 </head>
 
 <body>
-<!--<div class="layui-layout layui-layout-admin">-->
-<!--    <div class="layui-header header header-demo" autumn>-->
-<!--        <div class="layui-main">-->
-<!--            <div class="layui-logo">成绩管理系统</div>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--</div>-->
     <div class="body-background">
-        <h1 class="title-login">数据库管理系统</h1>
+        <h1 class="title-login">成绩管理系统 - 学生端</h1>
+        <div class="go-text">
+            <span>
+                <a href="loginTeacher.html">
+                    <span class="glyphicon glyphicon-arrow-right"></span>前往教师端
+                </a>
+            </span>
+            <span style="padding-left: calc(5vh);">
+                <a href="loginAdmin.html">
+                    <span class="glyphicon glyphicon-arrow-right"></span>前往教务端
+                </a>
+            </span>
+        </div>
         <div class="text-login">
             <div class="text-message">
                 <div class="layui-form-item">
@@ -35,7 +40,7 @@
                 </div>
                 <label class="layui-register">没有账号？点击</label><a href="#">注册</a>
             </div>
-            <button class="layui-btn" lay-submit lay-filter="formDemo">登录</button>
+            <button class="layui-btn" lay-submit lay-filter="formDemo" onclick="loginBtnStudent()">登录</button>
             <a href="#" class="layui-tips">忘记密码？</a>
         </div>
     </div>
@@ -44,5 +49,5 @@
 <script src="../../resource/jquery-3.5.1/jquery-3.5.1.js"></script>
 <script src="../../resource/bootstrap-3.3.7-dist/js/bootstrap.js"></script>
 <script src="../../resource/layui-v2.5.6/layui/layui.all.js"></script>
-
+<script src="../../js/login.js"></script>
 </html>
