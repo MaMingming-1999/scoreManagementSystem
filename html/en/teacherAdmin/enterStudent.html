@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="../../resource/bootstrap-3.3.7-dist/css/bootstrap-theme.css">
     <link rel="stylesheet" href="../../resource/layui-v2.5.6/layui/css/layui.css">
     <link rel="stylesheet" href="../../css/common.css">
+    <link rel="stylesheet" href="../../css/enterCommon.css">
 </head>
 <body class="layui-layout-body">
 
@@ -24,7 +25,7 @@
         </ul>
     </div>
 
-    <!--垂直导航：显示个人信息+修改个人信息-->
+    <!--垂直导航-->
     <div class="layui-side layui-bg-black">
         <div class="layui-side-scroll">
             <ul class="layui-nav layui-nav-tree"  lay-filter="test">
@@ -54,7 +55,113 @@
     </div>
     <div class="layui-body">
         <!-- 内容主体区域 -->
-
+        <div class="layui-tab layui-tab-card more-enter">
+            <ul class="layui-tab-title">
+                <li class="layui-this">批量导入学生信息</li>
+                <li>单独导入学生信息</li>
+            </ul>
+            <div class="layui-tab-content" style="height: 100px;">
+                <div class="layui-tab-item layui-show" >
+                    <div class="layui-row" style="background-color: #F8F8F8">
+                        <div class="layui-col-md10 layui-col-md-offset3">
+                            <div>
+                                <div class="layui-circle layui-bg-blue more-step layui-inline">Step1</div>
+                                <div class="more-label layui-inline">下载并填写Excel模板</div>
+                                <button class="layui-btn layui-inline more-model">下载导入模板</button>
+                            </div>
+                            <div>
+                                <div class="layui-circle layui-bg-orange more-step layui-inline">Step2</div>
+                                <div class="more-label layui-inline">上传导入的Excel模板</div>
+                                <button type="button" class="layui-btn more-model" id="test3"><i class="layui-icon"></i>上传文件</button>
+                                <div class="more-label layui-inline more-star">*请上传Excel格式的文件</div>
+                            </div>
+                            <div>
+                                <div class="layui-circle layui-bg-red more-step layui-inline" style="margin-bottom: calc(5vh);">Step3</div>
+                                <div class="layui-inline" style="color: #6c6c6c;margin-left: calc(3vh);">完成</div>
+                            </div>
+                        </div>
+                        <div class="layui-col-md12">
+                            <div class="layui-card">
+                                <div class="layui-card-header" style="background-color:#ffffff"></div>
+                                <div class="layui-card-header" style="background-color:#e8e8e8">导入说明</div>
+                                <div class="layui-card-body">
+                                    1、管理员可以通过Excel文件的方式批量添加学生信息；<br/>
+                                    2、导入步骤：一、下载并填写Excel模板，二、上传填写好的Excel模板，三、完成；<br/>
+                                    3、Excel文件必填字段为：学号、姓名、性别、学院、班级、邮箱、手机号、学级；<br/>
+                                    4、Excel文件非必填字段为：初始密码，若不填，缺省值为123456<br/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-tab-item">
+                    <form class="layui-form more-form" action="" >
+                        <div class="layui-form-item">
+                            <div class="layui-inline">
+                                <label class="layui-form-label">学号<span class="more-star">*</span></label>
+                                <div class="layui-input-block">
+                                    <input type="text" name="username" lay-verify="required" lay-reqtext="必填项学号为空" placeholder="请输入" autocomplete="off" class="layui-input">
+                                </div>
+                            </div>
+                            <div class="layui-inline">
+                                <label class="layui-form-label">姓名<span class="more-star">*</span></label>
+                                <div class="layui-input-block">
+                                    <input type="text" name="username" lay-verify="required" lay-reqtext="必填项姓名为空" placeholder="请输入" autocomplete="off" class="layui-input">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <div class="layui-inline">
+                                <label class="layui-form-label">学院<span class="more-star">*</span></label>
+                                <div class="layui-input-block">
+                                    <input type="text" name="username" lay-verify="required" lay-reqtext="必填项学院为空" placeholder="请输入" autocomplete="off" class="layui-input">
+                                </div>
+                            </div>
+                            <div class="layui-inline">
+                                <label class="layui-form-label">班级<span class="more-star">*</span></label>
+                                <div class="layui-input-block">
+                                    <input type="text" name="username" lay-verify="required" lay-reqtext="必填项班级为空" placeholder="请输入" autocomplete="off" class="layui-input">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <div class="layui-inline">
+                                <label class="layui-form-label">密码<span class="more-star">*</span></label>
+                                <div class="layui-input-block">
+                                    <input type="text" name="username" lay-verify="required" lay-reqtext="必填项初始密码为空" value="123456" autocomplete="off" class="layui-input">
+                                </div>
+                            </div>
+                            <div class="layui-inline">
+                                <label class="layui-form-label">学级<span class="more-star">*</span></label>
+                                <div class="layui-input-block">
+                                    <input type="text" name="username" lay-verify="required" lay-reqtext="必填项学级为空" placeholder="请输入" autocomplete="off" class="layui-input">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <div class="layui-inline">
+                                <label class="layui-form-label">手机<span class="more-star">*</span></label>
+                                <div class="layui-input-block">
+                                    <input type="tel" name="phone" lay-verify="required|phone" lay-reqtext="必填项手机为空" placeholder="请输入" autocomplete="off" class="layui-input">
+                                </div>
+                            </div>
+                            <div class="layui-inline">
+                                <label class="layui-form-label">邮箱<span class="more-star">*</span></label>
+                                <div class="layui-input-block">
+                                    <input type="text" name="email" lay-verify="email" lay-reqtext="必填项邮箱为空" placeholder="请输入" autocomplete="off" class="layui-input">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <div class="layui-input-block">
+                                <button type="submit" class="layui-btn" lay-submit="" lay-filter="demo1">立即提交</button>
+                                <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
 
     </div>
 
@@ -70,4 +177,24 @@
 <script src="../../resource/jquery-3.5.1/jquery-3.5.1.js"></script>
 <script src="../../resource/bootstrap-3.3.7-dist/js/bootstrap.js"></script>
 <script src="../../resource/layui-v2.5.6/layui/layui.all.js"></script>
+<script>
+    layui.use('upload', function() {
+        var $ = layui.jquery
+            ,upload = layui.upload;
+            upload.render({
+                elem: '#test3'
+                , url: 'https://httpbin.org/post' //改成您自己的上传接口
+                , accept: 'file' //普通文件
+                ,exts: 'xlsx|xls' //只允许上传excel文件
+                , done: function (res) {
+                    layer.msg('上传成功');
+                    console.log(res);
+                }
+            });
+    })
+</script>
+<script>
+    layui.use(['form'], function(){
+        var form = layui.form})
+</script>
 </html>

@@ -1,0 +1,44 @@
+.more-enter{
+    width:100%;
+    height: calc(100vh);
+}
+.more-step{
+    width: calc(8vh);
+    height: calc(8vh);
+    text-align: center;
+    line-height: calc(8vh);
+    font-size: 12px;
+    font-weight: bold;
+    margin-top: calc(5vh);
+}
+.more-model{
+    margin-left: calc(20vh);
+    margin-top: calc(5vh);
+}
+.more-label{
+    padding-top: calc(5vh);
+    color: #6c6c6c;
+    margin-left: calc(3vh);
+}
+.more-contact{
+    margin-top: calc(3vh);
+    margin-left: calc(5vh);
+}
+.more-star{
+    color: red;
+}
+.more-form{
+    width: 60%;
+    margin: 0 auto;
+    margin-top:calc(5vh);
+    margin-bottom:calc(5vh);
+}
+.layui-form-item{
+    padding-top: calc(3vh);
+}
+.layui-tab li{
+    width: 50%;
+}
+.layui-form-label {
+    width: 100px;
+}
