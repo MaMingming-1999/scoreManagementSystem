@@ -41,22 +41,23 @@
         </div>
     </div>
     <div class="layui-body">
-        <fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
-            <legend>个人信息</legend>
-        </fieldset>
+        <div class="layui-elem-quote"
+             style="background-color: white;margin-left: 10px;margin-top: 5px;font-size: 17px;">
+            个人信息
+        </div>
         <!-- 内容主体区域 -->
         <form class="layui-form more-form layui-form-pane" action="" >
             <div class="layui-form-item">
                 <div class="layui-inline">
                     <label class="layui-form-label">学号</label>
                     <div class="layui-input-block">
-                        <input type="text" name="username" lay-verify="required" lay-reqtext="必填项学号为空" placeholder="加载中.." autocomplete="off" class="layui-input" disabled="disabled">
+                        <input type="text" id="studentId"  name="username" lay-verify="required" lay-reqtext="必填项学号为空" placeholder="加载中.." autocomplete="off" class="layui-input" disabled="disabled">
                     </div>
                 </div>
                 <div class="layui-inline">
                     <label class="layui-form-label">姓名</label>
                     <div class="layui-input-block">
-                        <input type="text" name="username" lay-verify="required" lay-reqtext="必填项姓名为空" placeholder="加载中.." autocomplete="off" class="layui-input" disabled="disabled">
+                        <input type="text" id="studentName" name="username" lay-verify="required" lay-reqtext="必填项姓名为空" placeholder="加载中.." autocomplete="off" class="layui-input" disabled="disabled">
                     </div>
                 </div>
             </div>
@@ -64,41 +65,35 @@
                 <div class="layui-inline">
                     <label class="layui-form-label">学院</label>
                     <div class="layui-input-block">
-                        <input type="text" name="username" lay-verify="required" lay-reqtext="必填项学院为空" placeholder="加载中.." autocomplete="off" class="layui-input" disabled="disabled">
+                        <input type="text"  id="studentCollege" lay-verify="required" lay-reqtext="必填项学院为空" placeholder="加载中.." autocomplete="off" class="layui-input" disabled="disabled">
                     </div>
                 </div>
-                <div class="layui-inline">
-                    <label class="layui-form-label">班级</label>
-                    <div class="layui-input-block">
-                        <input type="text" name="username" lay-verify="required" lay-reqtext="必填项班级为空" placeholder="加载中.." autocomplete="off" class="layui-input" disabled="disabled">
-                    </div>
-                </div>
-            </div>
-            <div class="layui-form-item">
                 <div class="layui-inline">
                     <label class="layui-form-label">专业</label>
                     <div class="layui-input-block">
-                        <input type="text" name="username" lay-verify="required" lay-reqtext="必填项初始密码为空" placeholder="加载中.." autocomplete="off" class="layui-input" disabled="disabled">
-                    </div>
-                </div>
-                <div class="layui-inline">
-                    <label class="layui-form-label">学级</label>
-                    <div class="layui-input-block">
-                        <input type="text" name="username" lay-verify="required" lay-reqtext="必填项学级为空" placeholder="加载中.." autocomplete="off" class="layui-input" disabled="disabled">
+                        <input type="text"  id="studentMajor" name="username" lay-verify="required" lay-reqtext="必填项初始密码为空" placeholder="加载中.." autocomplete="off" class="layui-input" disabled="disabled">
                     </div>
                 </div>
             </div>
             <div class="layui-form-item">
                 <div class="layui-inline">
-                    <label class="layui-form-label">手机</label>
+                    <label class="layui-form-label">学级</label>
                     <div class="layui-input-block">
-                        <input type="tel" name="phone" lay-verify="required|phone" lay-reqtext="必填项手机为空" placeholder="加载中.." autocomplete="off" class="layui-input">
+                        <input type="text"  id="studentYear" name="username" lay-verify="required" lay-reqtext="必填项学级为空" placeholder="加载中.." autocomplete="off" class="layui-input" disabled="disabled">
                     </div>
                 </div>
                 <div class="layui-inline">
+                    <label class="layui-form-label">手机</label>
+                    <div class="layui-input-block">
+                        <input type="tel"  id="studentPhone" name="phone" lay-verify="required|phone" lay-reqtext="必填项手机为空" placeholder="加载中.." autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <div class="layui-inline">
                     <label class="layui-form-label">邮箱</label>
                     <div class="layui-input-block">
-                        <input type="text" name="email" lay-verify="email" lay-reqtext="必填项邮箱为空" placeholder="加载中.." autocomplete="off" class="layui-input">
+                        <input type="text"  id="studentEmail" name="email" lay-verify="email" lay-reqtext="必填项邮箱为空" placeholder="加载中.." autocomplete="off" class="layui-input">
                     </div>
                 </div>
             </div>
@@ -118,4 +113,5 @@
 <script src="../../resource/jquery-3.5.1/jquery-3.5.1.js"></script>
 <script src="../../resource/bootstrap-3.3.7-dist/js/bootstrap.js"></script>
 <script src="../../resource/layui-v2.5.6/layui/layui.all.js"></script>
+<script src="../../js/Studentcommon.js"></script>
 </html>

@@ -47,22 +47,10 @@
     </div>
     <div class="layui-body">
         <!-- 内容主体区域 -->
-        <form class="layui-form layui-form-pane" action="">
-            <div class="layui-form-item">
-                <div class="layui-inline">
-                    <label class="layui-form-label">获得总学分</label>
-                    <div class="layui-input-block">
-                        <input type="text" name="title" autocomplete="off" placeholder="加载中.." class="layui-input" disabled="disabled">
-                    </div>
-                </div>
-                <div class="layui-inline">
-                    <label class="layui-form-label">绩点</label>
-                    <div class="layui-input-block">
-                        <input type="text" name="title" autocomplete="off" placeholder="加载中.." class="layui-input" disabled="disabled">
-                    </div>
-                </div>
-            </div>
-        </form>
+        <div class="layui-elem-quote"
+             style="background-color: white;margin-left: 10px;margin-top: 5px;font-size: 17px;">
+            个人成绩查询
+        </div>
         <table class="layui-hide" id="studentInfo" lay-filter="test"></table>
 
     </div>
@@ -79,6 +67,15 @@
 <script src="../../resource/jquery-3.5.1/jquery-3.5.1.js"></script>
 <script src="../../resource/bootstrap-3.3.7-dist/js/bootstrap.js"></script>
 <script src="../../resource/layui-v2.5.6/layui/layui.all.js"></script>
+<script src="../../js/Studentcommon.js"></script>
+<script src="../../resource/layui-v2.5.6/layui/lay/modules/table.js"></script>
+<script type="text/html" id="toolbarDemo">
+    <div class="layui-btn-container">
+        <button class="layui-btn layui-btn-sm" lay-event="getCheckData">获取选中行数据</button>
+        <button class="layui-btn layui-btn-sm" lay-event="getCheckLength">获取选中数目</button>
+        <button class="layui-btn layui-btn-sm" lay-event="isAll">验证是否全选</button>
+    </div>
+</script>
 <script>
     layui.use(['laydate', 'laypage', 'layer', 'table', 'carousel', 'upload', 'element', 'slider'], function(){
         var laypage = layui.laypage //分页
@@ -88,14 +85,26 @@
         table.render({
             elem: '#studentInfo'
             ,height: 420
-            ,url: '/demo/table/user/' //数据接口
+            ,method :'post'
+            ,url: 'http://localhost:8001/demo/score/returnscore' //数据接口
+            ,where: {
+                id: JSON.parse(localStorage.getItem('student')).sid,
+            }
+            ,xhrFields: {withCredentials: true}
+            ,contentType: 'application/json'
+            ,crossDomain: true
+            ,limit: Number.MAX_VALUE // 数据表格默认全部显示
             ,title: '用户表'
+            ,toolbar: '#toolbarDemo' //开启头部工具栏，并为其绑定左侧模板
+            ,defaultToolbar: ['exports', 'print']
             ,cols: [[ //表头
                 {type: 'checkbox', fixed: 'left'}
-                ,{field: 'id', title: '课程编号', width:200, sort: true, fixed: 'left', totalRowText: '合计：'}
-                ,{field: 'username', title: '课程名称', width:200}
-                ,{field: 'college', title: '课程分数', width: 200}
-                ,{field: 'college', title: '课程等级', width: 200}
+                ,{field: 'cid', title: '课程编号', sort: true, fixed: 'left', totalRowText: '合计：'}
+                ,{field: 'username', title: '课程名称'}
+                ,{field: 'susually', title: '课程分数'}
+                ,{field: 'sfinally', title: '课程等级'}
+                ,{field: 'spercent', title: '课程等级'}
+                ,{field: 'srank', title: '课程等级'}
             ]]
         });
 
