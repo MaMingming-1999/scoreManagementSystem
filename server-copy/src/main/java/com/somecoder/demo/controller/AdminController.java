@@ -28,7 +28,7 @@ import javax.annotation.Resource;
 @CrossOrigin
 @RequestMapping("/demo/admin")
 public class AdminController {
-
+//test
     Logger logger = LoggerFactory.getLogger(AdminController.class);
 
     @Resource
