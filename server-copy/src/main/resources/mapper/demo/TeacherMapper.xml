@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.somecoder.demo.mapper.TeacherMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.somecoder.demo.entity.Teacher">
+        <id column="tid" property="tid" />
+        <result column="aid" property="aid" />
+        <result column="tname" property="tname" />
+        <result column="temail" property="temail" />
+        <result column="tphone" property="tphone" />
+        <result column="tpassword" property="tpassword" />
+        <result column="tcollege" property="tcollege" />
+        <result column="remark" property="remark" />
+    </resultMap>
+
+</mapper>

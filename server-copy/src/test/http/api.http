@@ -1,0 +1,103 @@
+### 获取心理问题类型列表
+POST http://{{host}}:{{port}}/{{project}}/care-type/xinli-list
+Content-Type: application/json
+token: {{token}}
+
+{
+
+}
+###
+
+
+### 获取性别列表
+POST http://{{host}}:{{port}}/{{project}}/login-user/gender-list
+Content-Type: application/json
+token: 123
+
+{
+
+}
+###
+
+### 获取年级列表
+POST http://{{host}}:{{port}}/{{project}}/login-user/grade-list
+Content-Type: application/json
+token: 123
+
+{
+
+}
+###
+
+
+### 获取专业列表
+POST http://{{host}}:{{port}}/{{project}}/major/major-list-by-user
+Content-Type: application/json
+token: 1234
+
+{
+
+}
+###
+
+### 获取班级列表
+POST http://{{host}}:{{port}}/{{project}}/class-table/class-list-by-user
+Content-Type: application/json
+token: 1234
+
+{
+
+}
+###
+
+### 获取学生列表
+POST http://{{host}}:{{port}}/{{project}}/student/list-by-user
+Content-Type: application/json
+token: 1234
+
+{
+
+}
+###
+
+### 获取心理问题学生列表
+POST http://{{host}}:{{port}}/{{project}}/care-student/xinli-list
+Content-Type: application/json
+token: 1234
+
+{
+  "careTypeId": 11,
+  "gradeId": 2013,
+  "classTableId": "class-1",
+  "majorId": "major-1",
+  "studentNo": "13303",
+  "studentName": "左",
+  "gender": "1",
+  "people": "汉",
+  "page": {
+    "page": 1,
+    "pageSize": 10
+  }
+}
+###
+
+### 获取心理问题学生列表
+POST http://{{host}}:{{port}}/{{project}}/care-student/xueye-list
+Content-Type: application/json
+token: 1234
+
+{
+  "careTypeId": 11,
+  "gradeId": 2013,
+  "classTableId": "class-1",
+  "majorId": "major-1",
+  "studentNo": "13303",
+  "studentName": "左",
+  "gender": "1",
+  "people": "汉",
+  "page": {
+    "page": 1,
+    "pageSize": 10
+  }
+}
+###
