@@ -2,10 +2,7 @@ package com.somecoder.demo.service.impl;
 
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.somecoder.demo.common.exception.BizException;
-import com.somecoder.demo.entity.Score;
-import com.somecoder.demo.entity.Student;
-import com.somecoder.demo.entity.UpdatePasswdRequest;
-import com.somecoder.demo.entity.UpdatescoreRequest;
+import com.somecoder.demo.entity.*;
 import com.somecoder.demo.mapper.ScoreMapper;
 import com.somecoder.demo.mapper.StudentMapper;
 import com.somecoder.demo.service.IScoreService;
@@ -31,12 +28,12 @@ public class ScoreServiceImpl extends ServiceImpl<ScoreMapper, Score> implements
     @Override
     public void updatescore(UpdatescoreRequest updatescoreRequest) {
         Score score = new Score();
-        score.setscore(updatescoreRequest.getSpercent());
-        int count = scoreMapper.update(
+
+        scoreMapper.update(
                 score,
                 Wrappers.lambdaUpdate(Score.class)
                         .eq(Score::getSid,updatescoreRequest.getSid())
-                        .eq(Score::getCid, updatescoreRequest.getCid())
+                        .eq(Score::getCid,updatescoreRequest.getCid())
                         .eq(Score::getSpercent, updatescoreRequest.getSpercent())
         );
     }

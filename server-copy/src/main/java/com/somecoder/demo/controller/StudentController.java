@@ -16,6 +16,8 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * <p>
@@ -59,6 +61,29 @@ public class StudentController {
         }
         return ApiResponse.success(sid);
     }
+
+
+    @ApiOperation(value = "返回学生信息（管理员）", tags = {CommonConstant.USER_API_TAG})
+    @PostMapping(value = "/returnTinfor")
+    public ApiResponse<List<Student>> getinforT(
+            @RequestBody AIdRequest aIdRequest
+    ) {
+        List<Student> students = new ArrayList<>();
+        try {
+            students = studentMapper.selectList(
+                    Wrappers.lambdaQuery(Student.class)
+                            .eq(Student::getAid,aIdRequest.getId())
+            );
+        } catch (BizException e) {
+            logger.error("获取个人信息异常,错误信息:[{}]", e.getErrMessage());
+            return ApiResponse.error(e.getErrMessage());
+        } catch (Exception e) {
+            logger.error("获取个人信息异常", e);
+            return ApiResponse.error(ErrorCodeEnum.SYSTEM_DEFAULT_ERROR);
+        }
+        return ApiResponse.success(students);
+    }
+
 
     @ApiOperation(value = "返回学生基本信息", tags = {CommonConstant.USER_API_TAG})
     @PostMapping(value = "/return")

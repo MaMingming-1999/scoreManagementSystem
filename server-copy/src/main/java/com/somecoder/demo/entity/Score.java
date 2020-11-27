@@ -36,7 +36,7 @@ public class Score extends Model<Score> {
 
     private Integer sfinally;
 
-    private Integer spercent;
+    private String spercent;
 
     private String srank;
 
@@ -48,6 +48,4 @@ public class Score extends Model<Score> {
         return this.cid;
     }
 
-    public void setscore(String spercent) {
-    }
 }

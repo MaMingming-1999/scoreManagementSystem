@@ -13,6 +13,5 @@ import com.somecoder.demo.entity.UpdatescoreRequest;
  * @since 2020-11-20
  */
 public interface IScoreService extends IService<Score> {
-
     void updatescore(UpdatescoreRequest updatescoreRequest);
 }
