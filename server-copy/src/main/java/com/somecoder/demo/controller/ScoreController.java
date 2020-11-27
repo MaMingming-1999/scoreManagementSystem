@@ -103,4 +103,25 @@ public class ScoreController {
         }
         return ApiResponse.success();
     }
+
+    @ApiOperation(value = "返回成绩（管理员）", tags = {CommonConstant.USER_API_TAG})
+    @PostMapping(value = "/return/Sinfo")
+    public ApiResponse<List<Score>> getSCORE(
+            @RequestBody AIdRequest aIdRequest
+    ) {
+        List<Score> scores = new ArrayList<>();
+        try {
+            scores = scoreMapper.selectList(
+                    Wrappers.lambdaQuery(Score.class)
+                            .eq(Score::getAid,aIdRequest.getId())
+            );
+        } catch (BizException e) {
+            logger.error("获取个人信息异常,错误信息:[{}]", e.getErrMessage());
+            return ApiResponse.error(e.getErrMessage());
+        } catch (Exception e) {
+            logger.error("获取个人信息异常", e);
+            return ApiResponse.error(ErrorCodeEnum.SYSTEM_DEFAULT_ERROR);
+        }
+        return ApiResponse.success(scores);
+    }
 }

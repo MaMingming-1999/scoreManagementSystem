@@ -16,6 +16,8 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * <p>
@@ -93,5 +95,27 @@ public class TeacherController {
             return ApiResponse.error(ErrorCodeEnum.SYSTEM_DEFAULT_ERROR);
         }
         return ApiResponse.success();
+    }
+
+
+    @ApiOperation(value = "返回教师信息（管理员）", tags = {CommonConstant.USER_API_TAG})
+    @PostMapping(value = "/return/Tinfo")
+    public ApiResponse<List<Teacher>> getinfoT(
+            @RequestBody AIdRequest aIdRequest
+    ) {
+        List<Teacher> teachers = new ArrayList<>();
+        try {
+            teachers = teacherMapper.selectList(
+                    Wrappers.lambdaQuery(Teacher.class)
+                            .eq(Teacher::getAid,aIdRequest.getId())
+            );
+        } catch (BizException e) {
+            logger.error("获取个人信息异常,错误信息:[{}]", e.getErrMessage());
+            return ApiResponse.error(e.getErrMessage());
+        } catch (Exception e) {
+            logger.error("获取个人信息异常", e);
+            return ApiResponse.error(ErrorCodeEnum.SYSTEM_DEFAULT_ERROR);
+        }
+        return ApiResponse.success(teachers);
     }
 }

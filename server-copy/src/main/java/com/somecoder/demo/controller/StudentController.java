@@ -62,7 +62,6 @@ public class StudentController {
         return ApiResponse.success(sid);
     }
 
-
     @ApiOperation(value = "返回学生信息（管理员）", tags = {CommonConstant.USER_API_TAG})
     @PostMapping(value = "/returnTinfor")
     public ApiResponse<List<Student>> getinforT(
@@ -83,7 +82,6 @@ public class StudentController {
         }
         return ApiResponse.success(students);
     }
-
 
     @ApiOperation(value = "返回学生基本信息", tags = {CommonConstant.USER_API_TAG})
     @PostMapping(value = "/return")

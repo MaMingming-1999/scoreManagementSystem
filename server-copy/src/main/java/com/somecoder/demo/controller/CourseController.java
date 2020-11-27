@@ -6,10 +6,7 @@ import com.somecoder.demo.common.ApiResponse;
 import com.somecoder.demo.common.CommonConstant;
 import com.somecoder.demo.common.ErrorCodeEnum;
 import com.somecoder.demo.common.exception.BizException;
-import com.somecoder.demo.entity.CommonIdRequest;
-import com.somecoder.demo.entity.Course;
-import com.somecoder.demo.entity.Score;
-import com.somecoder.demo.entity.StudentRequest;
+import com.somecoder.demo.entity.*;
 import com.somecoder.demo.mapper.CourseMapper;
 import com.somecoder.demo.mapper.ScoreMapper;
 import com.somecoder.demo.service.ICourseService;
@@ -103,5 +100,24 @@ public class CourseController {
         return ApiResponse.success();
     }
 
-
+    @ApiOperation(value = "返回课程（管理员）", tags = {CommonConstant.USER_API_TAG})
+    @PostMapping(value = "/return/Cinfo")
+    public ApiResponse<List<Course>> getCOURSE(
+            @RequestBody AIdRequest aIdRequest
+    ) {
+        List<Course> courses = new ArrayList<>();
+        try {
+            courses = courseMapper.selectList(
+                    Wrappers.lambdaQuery(Course.class)
+                            .eq(Course::getAid,aIdRequest.getId())
+            );
+        } catch (BizException e) {
+            logger.error("获取个人信息异常,错误信息:[{}]", e.getErrMessage());
+            return ApiResponse.error(e.getErrMessage());
+        } catch (Exception e) {
+            logger.error("获取个人信息异常", e);
+            return ApiResponse.error(ErrorCodeEnum.SYSTEM_DEFAULT_ERROR);
+        }
+        return ApiResponse.success(courses);
+    }
 }
