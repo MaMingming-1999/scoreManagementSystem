@@ -38,4 +38,8 @@ public class TeacherRequest {
     @NotBlank(message = "教师邮箱不能为空")
     private String temail;
 
+    @ApiModelProperty(value = "教务编号")
+    @NotNull(message = "教务编号不能为空")
+    @NotBlank(message = "教务编号不能为空")
+    private String aid;
 }
