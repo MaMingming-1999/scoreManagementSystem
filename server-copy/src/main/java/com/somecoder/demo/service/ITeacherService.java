@@ -1,10 +1,7 @@
 package com.somecoder.demo.service;
 
-import com.somecoder.demo.entity.LoginRequest;
-import com.somecoder.demo.entity.Teacher;
+import com.somecoder.demo.entity.*;
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.somecoder.demo.entity.TeacherRequest;
-import com.somecoder.demo.entity.UpdatePasswdRequest;
 
 /**
  * <p>
@@ -20,4 +17,6 @@ public interface ITeacherService extends IService<Teacher> {
     void updatePassword(UpdatePasswdRequest updatePasswdRequest);
 
     void insertteacher(TeacherRequest teacherrequest);
+
+    void updatetphone(UpdatetphoneRequest updatetphoneRequest);
 }

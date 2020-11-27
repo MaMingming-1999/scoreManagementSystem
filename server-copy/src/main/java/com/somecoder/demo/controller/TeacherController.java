@@ -118,4 +118,22 @@ public class TeacherController {
         }
         return ApiResponse.success(teachers);
     }
+
+    @ApiOperation(value = "修改老师手机号", tags = {CommonConstant.LOGIN_USER})
+    @PostMapping(value = "/update/tphone")
+    public ApiResponse updatetphone(
+            @RequestBody @Validated UpdatetphoneRequest updatetphoneRequest
+    ) {
+        try {
+            teacherService.updatetphone(updatetphoneRequest);
+        }
+        catch (BizException e) {
+            logger.error("更新学生成绩异常,错误信息:[{}]", e.getErrMessage());
+            return ApiResponse.error(e.getErrMessage());
+        } catch (Exception e) {
+            logger.error("更新学生成绩异常", e);
+            return ApiResponse.error(ErrorCodeEnum.SYSTEM_DEFAULT_ERROR);
+        }
+        return ApiResponse.success();
+    }
 }
