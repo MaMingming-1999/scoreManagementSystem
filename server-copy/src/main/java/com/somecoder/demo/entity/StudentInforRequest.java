@@ -48,4 +48,8 @@ public class StudentInforRequest {
         @NotBlank(message = "课程名称不能为空")
         private String semail;
 
+        @ApiModelProperty(value = "教务编码")
+        @NotNull(message = "课程名称不能为空")
+        @NotBlank(message = "课程名称不能为空")
+        private String aid;
 }
