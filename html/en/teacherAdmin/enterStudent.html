@@ -20,7 +20,7 @@
         </ul>
         <ul class="layui-nav layui-layout-right">
             <img src="../../image/stuHead.jpg" class="layui-nav-img"/>
-            <span id="showUserName" style="margin-right: calc(5vh);">Avatar</span>
+            <span id="showUserName" style="margin-right: calc(5vh);">管理员</span>
             <li class="layui-nav-item" onclick="exitLogin()">退出登录</li>
         </ul>
     </div>
@@ -100,13 +100,13 @@
                             <div class="layui-inline">
                                 <label class="layui-form-label">学号<span class="more-star">*</span></label>
                                 <div class="layui-input-block">
-                                    <input type="text" name="username" lay-verify="required" lay-reqtext="必填项学号为空" placeholder="请输入" autocomplete="off" class="layui-input">
+                                    <input type="text" id="enterStudentSid" name="username" lay-verify="required" lay-reqtext="必填项学号为空" placeholder="请输入" autocomplete="off" class="layui-input">
                                 </div>
                             </div>
                             <div class="layui-inline">
                                 <label class="layui-form-label">姓名<span class="more-star">*</span></label>
                                 <div class="layui-input-block">
-                                    <input type="text" name="username" lay-verify="required" lay-reqtext="必填项姓名为空" placeholder="请输入" autocomplete="off" class="layui-input">
+                                    <input type="text" id="enterStudentName" name="username" lay-verify="required" lay-reqtext="必填项姓名为空" placeholder="请输入" autocomplete="off" class="layui-input">
                                 </div>
                             </div>
                         </div>
@@ -114,13 +114,13 @@
                             <div class="layui-inline">
                                 <label class="layui-form-label">学院<span class="more-star">*</span></label>
                                 <div class="layui-input-block">
-                                    <input type="text" name="username" lay-verify="required" lay-reqtext="必填项学院为空" placeholder="请输入" autocomplete="off" class="layui-input">
+                                    <input type="text" id="enterStudentCollege" name="username" lay-verify="required" lay-reqtext="必填项学院为空" placeholder="请输入" autocomplete="off" class="layui-input">
                                 </div>
                             </div>
                             <div class="layui-inline">
-                                <label class="layui-form-label">班级<span class="more-star">*</span></label>
+                                <label class="layui-form-label">专业<span class="more-star">*</span></label>
                                 <div class="layui-input-block">
-                                    <input type="text" name="username" lay-verify="required" lay-reqtext="必填项班级为空" placeholder="请输入" autocomplete="off" class="layui-input">
+                                    <input type="text" id="enterStudentMajor" name="username" lay-verify="required" lay-reqtext="必填项班级为空" placeholder="请输入" autocomplete="off" class="layui-input">
                                 </div>
                             </div>
                         </div>
@@ -128,13 +128,13 @@
                             <div class="layui-inline">
                                 <label class="layui-form-label">密码<span class="more-star">*</span></label>
                                 <div class="layui-input-block">
-                                    <input type="text" name="username" lay-verify="required" lay-reqtext="必填项初始密码为空" value="123456" autocomplete="off" class="layui-input">
+                                    <input type="text" id="enterStudentPassword" name="username" lay-verify="required" lay-reqtext="必填项初始密码为空" value="123456" autocomplete="off" class="layui-input">
                                 </div>
                             </div>
                             <div class="layui-inline">
                                 <label class="layui-form-label">学级<span class="more-star">*</span></label>
                                 <div class="layui-input-block">
-                                    <input type="text" name="username" lay-verify="required" lay-reqtext="必填项学级为空" placeholder="请输入" autocomplete="off" class="layui-input">
+                                    <input type="text" id="enterStudentYear" name="username" lay-verify="required" lay-reqtext="必填项学级为空" placeholder="请输入" autocomplete="off" class="layui-input">
                                 </div>
                             </div>
                         </div>
@@ -142,23 +142,23 @@
                             <div class="layui-inline">
                                 <label class="layui-form-label">手机<span class="more-star">*</span></label>
                                 <div class="layui-input-block">
-                                    <input type="tel" name="phone" lay-verify="required|phone" lay-reqtext="必填项手机为空" placeholder="请输入" autocomplete="off" class="layui-input">
+                                    <input type="tel" id="enterStudentPhone" name="phone" lay-verify="required|phone" lay-reqtext="必填项手机为空" placeholder="请输入" autocomplete="off" class="layui-input">
                                 </div>
                             </div>
                             <div class="layui-inline">
                                 <label class="layui-form-label">邮箱<span class="more-star">*</span></label>
                                 <div class="layui-input-block">
-                                    <input type="text" name="email" lay-verify="email" lay-reqtext="必填项邮箱为空" placeholder="请输入" autocomplete="off" class="layui-input">
+                                    <input type="text" id="enterStudentEmail" name="email" lay-verify="email" lay-reqtext="必填项邮箱为空" placeholder="请输入" autocomplete="off" class="layui-input">
                                 </div>
                             </div>
                         </div>
                         <div class="layui-form-item">
                             <div class="layui-input-block">
-                                <button type="submit" class="layui-btn" lay-submit="" lay-filter="demo1">立即提交</button>
                                 <button type="reset" class="layui-btn layui-btn-primary">重置</button>
                             </div>
                         </div>
                     </form>
+                    <button class="layui-btn" onclick="submitEnterStudent()" style="margin-left: 28%;">立即提交</button>
                 </div>
             </div>
         </div>
@@ -177,6 +177,7 @@
 <script src="../../resource/jquery-3.5.1/jquery-3.5.1.js"></script>
 <script src="../../resource/bootstrap-3.3.7-dist/js/bootstrap.js"></script>
 <script src="../../resource/layui-v2.5.6/layui/layui.all.js"></script>
+<script src="../../js/adminCommon.js"></script>
 <script>
     layui.use('upload', function() {
         var $ = layui.jquery

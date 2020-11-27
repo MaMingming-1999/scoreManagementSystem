@@ -20,7 +20,7 @@
         </ul>
         <ul class="layui-nav layui-layout-right">
             <img src="../../image/stuHead.jpg" class="layui-nav-img"/>
-            <span id="showUserName" style="margin-right: calc(5vh);">Avatar</span>
+            <span id="showUserName" style="margin-right: calc(5vh);">管理员</span>
             <li class="layui-nav-item" onclick="exitLogin()">退出登录</li>
         </ul>
     </div>
@@ -98,65 +98,70 @@
                         <div class="layui-form-item">
                             <label class="layui-form-label">课程编号<span class="more-star">*</span></label>
                             <div class="layui-input-block">
-                                <input type="text" name="username" lay-verify="required" lay-reqtext="必填项课程编号为空" placeholder="请输入" autocomplete="off" class="layui-input">
+                                <input type="text" id="EnterCourseCid" name="username" lay-verify="required" lay-reqtext="必填项课程编号为空" placeholder="请输入" autocomplete="off" class="layui-input">
                             </div>
                         </div>
                         <div class="layui-form-item">
                             <label class="layui-form-label">课程名<span class="more-star">*</span></label>
                             <div class="layui-input-block">
-                                <input type="text" name="username" lay-verify="required" lay-reqtext="必填项课程名为空" placeholder="请输入" autocomplete="off" class="layui-input">
-                            </div>
-                        </div>
-                        <div class="layui-form-item">
-                            <label class="layui-form-label">课程学分<span class="more-star">*</span></label>
-                            <div class="layui-input-block">
-                                <input type="text" name="username" lay-verify="required" lay-reqtext="必填项课程学分为空" placeholder="请输入" autocomplete="off" class="layui-input">
+                                <input type="text" id="EnterCourseCname" name="username" lay-verify="required" lay-reqtext="必填项课程名为空" placeholder="请输入" autocomplete="off" class="layui-input">
                             </div>
                         </div>
                         <div class="layui-form-item">
                             <label class="layui-form-label">开设年级<span class="more-star">*</span></label>
                             <div class="layui-input-block">
-                                <select name="interest" lay-filter="grade">
-                                    <option value="0">2016级</option>
-                                    <option value="1">2017级</option>
-                                    <option value="2">2018级</option>
-                                    <option value="3">2019级</option>
-                                    <option value="4">2020级</option>
+                                <select name="interest" lay-filter="grade" id="EnterCourseYear">
+                                    <option value="2016级">2016级</option>
+                                    <option value="2017级">2017级</option>
+                                    <option value="2018级">2018级</option>
+                                    <option value="2019级">2019级</option>
+                                    <option value="2020级">2020级</option>
                                 </select>
                             </div>
                         </div>
                         <div class="layui-form-item">
                             <label class="layui-form-label">开设学院<span class="more-star">*</span></label>
                             <div class="layui-input-block">
-                                <select name="interest" lay-filter="college">
-                                    <option value="0">人工智能与数据科学学院</option>
+                                <select name="interest" lay-filter="college" id="EnterCourseCollege">
+                                    <option value="人工智能与数据科学学院">人工智能与数据科学学院</option>
                                 </select>
                             </div>
                         </div>
                         <div class="layui-form-item">
                             <label class="layui-form-label">开设专业<span class="more-star">*</span></label>
                             <div class="layui-input-block">
-                                <select name="interest" lay-filter="professional">
-                                    <option value="0">软件工程</option>
-                                    <option value="1">计算机科学与技术</option>
-                                    <option value="2">物联网工程</option>
-                                    <option value="3">网络工程</option>
-                                    <option value="4">自动化</option>
-                                    <option value="5">新能源科学与技术</option>
-                                    <option value="6">智能科学与技术</option>
-                                    <option value="7">计算机科学与技术（试点班）</option>
-                                    <option value="8">计算机科学与技术（双学位）</option>
+                                <select name="interest" lay-filter="professional" id="EnterCourseMajor">
+                                    <option value="软件工程">软件工程</option>
+                                    <option value="计算机科学与技术">计算机科学与技术</option>
+                                    <option value="物联网工程">物联网工程</option>
+                                    <option value="网络工程">网络工程</option>
+                                    <option value="自动化">自动化</option>
+                                    <option value="新能源科学与技术">新能源科学与技术</option>
+                                    <option value="智能科学与技术">智能科学与技术</option>
+                                    <option value="计算机科学与技术（试点班）">计算机科学与技术（试点班）</option>
+                                    <option value="计算机科学与技术（双学位）">计算机科学与技术（双学位）</option>
                                 </select>
                             </div>
                         </div>
                         <div class="layui-form-item">
+                            <label class="layui-form-label">教师工号<span class="more-star">*</span></label>
                             <div class="layui-input-block">
-                                <button type="submit" class="layui-btn" lay-submit="" lay-filter="demo1">立即提交</button>
+                                <input type="text" id="EnterCourseTid" name="username" lay-verify="required" lay-reqtext="必填项课程名为空" placeholder="请输入" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">学生学号<span class="more-star">*</span></label>
+                            <div class="layui-input-block">
+                                <input type="text" name="username" id="EnterCourseSid" lay-verify="required" lay-reqtext="必填项课程学分为空" placeholder="请输入" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <div class="layui-input-block">
                                 <button type="reset" class="layui-btn layui-btn-primary">重置</button>
                             </div>
                         </div>
                     </form>
-
+                    <button class="layui-btn" onclick="submitEnterCourse()" style="margin-left: 28%;">立即提交</button>
                 </div>
             </div>
         </div>
@@ -175,4 +180,5 @@
 <script src="../../resource/jquery-3.5.1/jquery-3.5.1.js"></script>
 <script src="../../resource/bootstrap-3.3.7-dist/js/bootstrap.js"></script>
 <script src="../../resource/layui-v2.5.6/layui/layui.all.js"></script>
+<script src="../../js/adminCommon.js"></script>
 </html>

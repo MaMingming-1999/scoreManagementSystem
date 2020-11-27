@@ -88,9 +88,9 @@ function loginBtnTeacher(){
     })
 }
 function loginBtnAdmin(){
-    var loginId = $('#adminAccount').val();//获取登陆名
-    var password = $('#adminPassword').val();//获取登陆名
-    if(loginId === ''||password === ''){
+    var loginId1 = $('#adminAccount').val();//获取登陆名
+    var password1 = $('#adminPassword').val();//获取登陆名
+    if(loginId1 === ''||password1 === ''){
         alert('用户名或者密码为空，请输入后再次提交');
         return;
     }
@@ -103,8 +103,8 @@ function loginBtnAdmin(){
         contentType:'application/json',
         //数据
         data:JSON.stringify({
-            sid:loginId,
-            spassword:password,
+            sid: loginId1,
+            spassword: password1,
         }),
         //返回值类型
         dataType:'json',
@@ -116,6 +116,7 @@ function loginBtnAdmin(){
                 console.log(data);
             } else {
                 alert('欢迎您');
+                localStorage.setItem('aid',loginId1);
                 window.location.href = "../teacherAdmin/index.html"
             }
 
