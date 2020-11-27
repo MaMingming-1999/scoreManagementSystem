@@ -1,10 +1,18 @@
 package com.somecoder.demo.service.impl;
 
+import com.baomidou.mybatisplus.core.toolkit.Wrappers;
+import com.somecoder.demo.common.exception.BizException;
 import com.somecoder.demo.entity.Score;
+import com.somecoder.demo.entity.Student;
+import com.somecoder.demo.entity.UpdatePasswdRequest;
+import com.somecoder.demo.entity.UpdatescoreRequest;
 import com.somecoder.demo.mapper.ScoreMapper;
+import com.somecoder.demo.mapper.StudentMapper;
 import com.somecoder.demo.service.IScoreService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
+
+import javax.annotation.Resource;
 
 /**
  * <p>
@@ -17,4 +25,19 @@ import org.springframework.stereotype.Service;
 @Service
 public class ScoreServiceImpl extends ServiceImpl<ScoreMapper, Score> implements IScoreService {
 
+    @Resource
+    ScoreMapper scoreMapper;
+
+    @Override
+    public void updatescore(UpdatescoreRequest updatescoreRequest) {
+        Score score = new Score();
+        score.setscore(updatescoreRequest.getSpercent());
+        int count = scoreMapper.update(
+                score,
+                Wrappers.lambdaUpdate(Score.class)
+                        .eq(Score::getSid,updatescoreRequest.getSid())
+                        .eq(Score::getCid, updatescoreRequest.getCid())
+                        .eq(Score::getSpercent, updatescoreRequest.getSpercent())
+        );
+    }
 }

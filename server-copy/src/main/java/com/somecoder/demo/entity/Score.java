@@ -48,4 +48,6 @@ public class Score extends Model<Score> {
         return this.cid;
     }
 
+    public void setscore(String spercent) {
+    }
 }

@@ -2,6 +2,7 @@ package com.somecoder.demo.service;
 
 import com.somecoder.demo.entity.Score;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.somecoder.demo.entity.UpdatescoreRequest;
 
 /**
  * <p>
@@ -13,4 +14,5 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface IScoreService extends IService<Score> {
 
+    void updatescore(UpdatescoreRequest updatescoreRequest);
 }
