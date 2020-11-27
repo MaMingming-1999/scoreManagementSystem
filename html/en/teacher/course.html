@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="../../resource/layui-v2.5.6/layui/css/layui.css">
     <link rel="stylesheet" href="../../css/common.css">
     <link rel="stylesheet" href="../../css/tableCommon.css">
+    <script src="../../js/teacherCommon.js"></script>
 </head>
 <body class="layui-layout-body">
 
@@ -88,34 +89,26 @@
         table.render({
             elem: '#studentInfo'
             ,height: 420
-            ,url: '/demo/table/user/' //数据接口
+            ,method :'post'
+            ,url: 'http://localhost:8001/demo/course/returnTcourse' //数据接口
+            ,where: {
+                id: JSON.parse(localStorage.getItem('teacher')).tid,
+            }
+            ,xhrFields: {withCredentials: true}
+            ,contentType: 'application/json'
+            ,crossDomain: true
+            ,limit: Number.MAX_VALUE // 数据表格默认全部显示
             ,title: '用户表'
-            ,page: true //开启分页
             ,toolbar: '#toolbarDemo' //开启头部工具栏，并为其绑定左侧模板
             ,defaultToolbar: ['filter', 'exports', 'print']
-            ,totalRow: true //开启合计行
             ,cols: [[ //表头
                 {type: 'checkbox', fixed: 'left'}
-                ,{field: 'id', title: '课程编号', width:200, sort: true, fixed: 'left', totalRowText: '合计：'}
-                ,{field: 'name', title: '课程名称', width:200}
-                ,{field: 'college', title: '开设学院', width:300}
-                ,{field: 'grade', title: '开设年级', width:200}
-                ,{field: 'professional', title: '开设专业', width: 400}
-                ,{fixed: 'right', width: 165, align:'center', toolbar: '#barDemo'}
+                ,{field: 'cid', title: '课程编号', sort: true, fixed: 'left', totalRowText: '合计：'}
+                ,{field: 'cname', title: '课程名称'}
+                ,{field: 'ccollege', title: '开设学院'}
+                ,{field: 'cyear', title: '开设年级'}
+                ,{field: 'cmajor', title: '开设专业'}
             ]]
-        });
-
-        //分页
-        laypage.render({
-            elem: 'pageDemo' //分页容器的id
-            ,count: 100 //总页数
-            ,skin: '#1E9FFF' //自定义选中色值
-            //,skip: true //开启跳页
-            ,jump: function(obj, first){
-                if(!first){
-                    layer.msg('第'+ obj.curr +'页', {offset: 'b'});
-                }
-            }
         });
 
         //头工具栏事件
@@ -132,11 +125,6 @@
                     break;
                 case 'isAll':
                     layer.msg(checkStatus.isAll ? '全选': '未全选');
-                    break;
-
-                //自定义头工具栏右侧图标 - 提示
-                case 'LAYTABLE_TIPS':
-                    layer.alert('这是工具栏右侧自定义的一个图标按钮');
                     break;
             };
         });

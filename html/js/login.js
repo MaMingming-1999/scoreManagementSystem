@@ -71,7 +71,12 @@ function loginBtnTeacher(){
                 alert(data.msg);
                 console.log(data);
             } else {
-                alert('欢迎您');
+                alert('欢迎您,'+ data.data.tname);
+                var teacher = JSON.stringify({
+                    tid : data.data.tid,
+                    tname : data.data.tname,
+                })
+                localStorage.setItem('teacher',teacher);
                 window.location.href = "../teacher/index.html"
             }
 

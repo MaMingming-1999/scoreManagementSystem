@@ -71,7 +71,7 @@
 <script src="../../resource/jquery-3.5.1/jquery-3.5.1.js"></script>
 <script src="../../resource/bootstrap-3.3.7-dist/js/bootstrap.js"></script>
 <script src="../../resource/layui-v2.5.6/layui/layui.all.js"></script>
-
+<script src="../../js/teacherCommon.js"></script>
 <script type="text/html" id="toolbarDemo">
     <div class="layui-btn-container">
         <button class="layui-btn layui-btn-sm" lay-event="getCheckData">获取选中行数据</button>
@@ -94,38 +94,29 @@
         //执行一个 table 实例
         table.render({
             elem: '#studentInfo'
+            ,method :'post'
             ,height: 420
-            ,url: '/demo/table/user/' //数据接口
+            ,url: 'http://localhost:8001/demo/score/returnTscore' //数据接口
+            ,where: {
+                id: JSON.parse(localStorage.getItem('teacher')).tid,
+            }
+            ,xhrFields: {withCredentials: true}
+            ,contentType: 'application/json'
+            ,crossDomain: true
+            ,limit: Number.MAX_VALUE // 数据表格默认全部显示
             ,title: '用户表'
-            ,page: true //开启分页
             ,toolbar: '#toolbarDemo' //开启头部工具栏，并为其绑定左侧模板
             ,defaultToolbar: ['filter', 'exports', 'print']
-            ,totalRow: true //开启合计行
             ,cols: [[ //表头
                 {type: 'checkbox', fixed: 'left'}
-                ,{field: 'id', title: '学号', width:80, sort: true, fixed: 'left', totalRowText: '合计：'}
-                ,{field: 'username', title: '姓名', width:100}
-                ,{field: 'college', title: '学院', width: 200}
-                ,{field: 'professional', title: '专业', width: 200}
-                ,{field: 'class', title: '班级', width:100}
-                ,{field: 'course', title: '科目', width: 150}
-                ,{field: 'teacherName', title: '教师', width: 100}
-                ,{field: 'rating', title: '成绩等级', width: 100}
-                ,{fixed: 'right', title: '操作', width: 165, align:'center', toolbar: '#barDemo'}
+                ,{field: 'sid', title: '学号', sort: true, fixed: 'left', totalRowText: '合计：'}
+                ,{field: 'cid', title: '课程编号'}
+                ,{field: 'susually', title: '平时成绩'}
+                ,{field: 'sfinally', title: '期末成绩'}
+                ,{field: 'spercent', title: '百分制成绩',edit: 'text'}
+                ,{field: 'srank', title: '等级制成绩'}
+                ,{fixed: 'right', title: '操作', align:'center', toolbar: '#barDemo'}
             ]]
-        });
-
-        //分页
-        laypage.render({
-            elem: 'pageDemo' //分页容器的id
-            ,count: 100 //总页数
-            ,skin: '#1E9FFF' //自定义选中色值
-            //,skip: true //开启跳页
-            ,jump: function(obj, first){
-                if(!first){
-                    layer.msg('第'+ obj.curr +'页', {offset: 'b'});
-                }
-            }
         });
 
         //头工具栏事件
@@ -143,11 +134,6 @@
                 case 'isAll':
                     layer.msg(checkStatus.isAll ? '全选': '未全选');
                     break;
-
-                //自定义头工具栏右侧图标 - 提示
-                case 'LAYTABLE_TIPS':
-                    layer.alert('这是工具栏右侧自定义的一个图标按钮');
-                    break;
             };
         });
 
@@ -162,13 +148,44 @@
                 });
             } else if(obj.event === 'edit'){
                 layer.prompt({
-                    formType: 2
-                    ,value: data.email
+                    formType: 0
+                    ,title: '请输入要修改的成绩'
+                    ,value: data.spercent
                 }, function(value, index){
-                    obj.update({
-                        email: value
-                    });
-                    layer.close(index);
+                    //调取信息接口
+                    $.ajax({
+                        //接口地址
+                        url:'http://localhost:8001/demo/score/update/score',
+                        //请求方式post/get
+                        type:'post',
+                        contentType:'application/json',
+                        //数据
+                        data:JSON.stringify({
+                            cid: data.cid,
+                            sid: data.sid,
+                            spercent: data.spercent,
+                        }),
+                        //返回值类型
+                        dataType:'json',
+                        //成功的回调函数
+                        success:function (data) {
+                            if(data.code===1)
+                            {
+                                alert(data.msg);
+                                console.log(data);
+                            } else {
+                                obj.update({
+                                    spercent: value
+                                });
+                                layer.close(index);
+                            }
+
+                        },
+                        //失败的回调函数
+                        error:function (e) {
+                            console.log(e);
+                        }
+                    })
                 });
             }
         });

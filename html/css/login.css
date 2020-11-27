@@ -96,7 +96,7 @@ input::-ms-input-placeholder{
     color:#009688;
     text-decoration: none;
     font-weight: bolder;
- }
+}
 .text-message a:hover{
     color:#009688;
     text-decoration: none;
@@ -133,4 +133,10 @@ input{
 .go-text a:active{
     text-decoration: none;
     color: #ffffff;
+}
+.text-change{
+    width: 50%;
+    height: calc(60vh);
+    margin: 0 auto;
+    background-color: rgba(200,200,200,0.3);
 }
