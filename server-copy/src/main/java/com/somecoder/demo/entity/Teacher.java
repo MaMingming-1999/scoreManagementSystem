@@ -46,9 +46,4 @@ public class Teacher extends Model<Teacher> {
         return this.tid;
     }
 
-    public void setPassword(String newPasswd) {
-    }
-
-    public void setTPassword(String newPasswd) {
-    }
 }

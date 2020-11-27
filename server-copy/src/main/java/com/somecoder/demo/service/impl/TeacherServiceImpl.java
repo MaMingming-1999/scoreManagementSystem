@@ -45,7 +45,7 @@ public class TeacherServiceImpl extends ServiceImpl<TeacherMapper, Teacher> impl
     @Override
     public void updatePassword(UpdatePasswdRequest updatePasswdRequest) {
         Teacher teacher = new Teacher();
-        teacher.setTPassword(updatePasswdRequest.getNewPasswd());
+        teacher.setTpassword(updatePasswdRequest.getNewPasswd());
         int count = teacherMapper.update(
                 teacher,
                 Wrappers.lambdaQuery(Teacher.class)

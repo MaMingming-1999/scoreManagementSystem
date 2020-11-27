@@ -49,7 +49,4 @@ public class Student extends Model<Student> {
     protected Serializable pkVal() {
         return this.sid;
     }
-
-    public void setSPassword(String newPasswd) {
-    }
 }

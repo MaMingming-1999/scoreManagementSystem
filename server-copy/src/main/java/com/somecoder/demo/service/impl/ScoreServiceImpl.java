@@ -28,13 +28,12 @@ public class ScoreServiceImpl extends ServiceImpl<ScoreMapper, Score> implements
     @Override
     public void updatescore(UpdatescoreRequest updatescoreRequest) {
         Score score = new Score();
-
+        score.setSpercent(updatescoreRequest.getSpercent());
         scoreMapper.update(
                 score,
                 Wrappers.lambdaUpdate(Score.class)
                         .eq(Score::getSid,updatescoreRequest.getSid())
                         .eq(Score::getCid,updatescoreRequest.getCid())
-                        .eq(Score::getSpercent, updatescoreRequest.getSpercent())
         );
     }
 }
