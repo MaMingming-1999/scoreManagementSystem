@@ -112,7 +112,7 @@
             ,limit: Number.MAX_VALUE // 数据表格默认全部显示
             ,title: '用户表'
             ,toolbar: '#toolbarDemo' //开启头部工具栏，并为其绑定左侧模板
-            ,defaultToolbar: ['filter', 'exports', 'print']
+            ,defaultToolbar: ['filter', 'print']
             ,cols: [[ //表头
                 {type: 'checkbox', fixed: 'left'}
                 ,{field: 'sid', title: '学号', sort: true, fixed: 'left', totalRowText: '合计：'}
@@ -177,39 +177,45 @@
                     ,value: data.spercent
                 }, function(value, index){
                     //调取信息接口
-                    $.ajax({
-                        //接口地址
-                        url:'http://localhost:8001/demo/score/update/score',
-                        //请求方式post/get
-                        type:'post',
-                        contentType:'application/json',
-                        //数据
-                        data:JSON.stringify({
-                            cid: data.cid,
-                            sid: data.sid,
-                            spercent: value,
-                        }),
-                        //返回值类型
-                        dataType:'json',
-                        //成功的回调函数
-                        success:function (data) {
-                            if(data.code===1)
-                            {
-                                alert(data.msg);
-                                console.log(data);
-                            } else {
-                                obj.update({
-                                    spercent: value
-                                });
-                                layer.close(index);
-                            }
+                    if( value < 0 || value > 100){
+                        layer.msg("成绩范围输入错误！");
+                        return;
+                    }else{
+                        $.ajax({
+                            //接口地址
+                            url:'http://localhost:8001/demo/score/update/score',
+                            //请求方式post/get
+                            type:'post',
+                            contentType:'application/json',
+                            //数据
+                            data:JSON.stringify({
+                                cid: data.cid,
+                                sid: data.sid,
+                                spercent: value,
+                            }),
+                            //返回值类型
+                            dataType:'json',
+                            //成功的回调函数
+                            success:function (data) {
+                                if(data.code===1)
+                                {
+                                    alert(data.msg);
+                                    console.log(data);
+                                } else {
+                                    layer.msg("修改成功！")
+                                    obj.update({
+                                        spercent: value
+                                    });
+                                    layer.close(index);
+                                }
 
-                        },
-                        //失败的回调函数
-                        error:function (e) {
-                            console.log(e);
-                        }
-                    })
+                            },
+                            //失败的回调函数
+                            error:function (e) {
+                                console.log(e);
+                            }
+                        })
+                    }
                 });
             }
         });

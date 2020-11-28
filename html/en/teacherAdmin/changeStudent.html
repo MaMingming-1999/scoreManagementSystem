@@ -168,13 +168,44 @@
                 });
             } else if(obj.event === 'edit'){
                 layer.prompt({
-                    formType: 2
-                    ,value: data.email
+                    formType: 0
+                    ,title: '请输入要修改的学级'
+                    ,value: data.syear
                 }, function(value, index){
-                    obj.update({
-                        email: value
-                    });
-                    layer.close(index);
+                    //调取信息接口
+                    $.ajax({
+                        //接口地址
+                        url:'http://localhost:8001/demo/student/update/syear',
+                        //请求方式post/get
+                        type:'post',
+                        contentType:'application/json',
+                        //数据
+                        data:JSON.stringify({
+                            sid: data.sid,
+                            syear: value,
+                        }),
+                        //返回值类型
+                        dataType:'json',
+                        //成功的回调函数
+                        success:function (data) {
+                            if(data.code===1)
+                            {
+                                alert(data.msg);
+                                console.log(data);
+                            } else {
+                                layer.msg("修改成功！")
+                                obj.update({
+                                    syear: value
+                                });
+                                layer.close(index);
+                            }
+
+                        },
+                        //失败的回调函数
+                        error:function (e) {
+                            alert("更新失败，请联系管理员！")
+                        }
+                    })
                 });
             }
         });
