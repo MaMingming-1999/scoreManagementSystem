@@ -72,6 +72,7 @@
 <script src="../../resource/bootstrap-3.3.7-dist/js/bootstrap.js"></script>
 <script src="../../resource/layui-v2.5.6/layui/layui.all.js"></script>
 <script src="../../js/teacherCommon.js"></script>
+<script src="../../js/login.js"></script>
 <script type="text/html" id="toolbarDemo">
     <div class="layui-btn-container">
         <button class="layui-btn layui-btn-sm" lay-event="getCheckData">获取选中行数据</button>
@@ -89,37 +90,26 @@
         table.render({
             elem: '#studentInfo'
             ,height: 420
-            ,url: '/demo/table/user/' //数据接口
+            ,method :'post'
+            ,url: 'http://localhost:8001/demo/student/return/TSinfor' //数据接口
+            ,where: {
+                tid: JSON.parse(localStorage.getItem('teacher')).tid,
+            }
+            ,xhrFields: {withCredentials: true}
+            ,contentType: 'application/json'
+            ,crossDomain: true
+            ,limit: Number.MAX_VALUE // 数据表格默认全部显示
             ,title: '用户表'
-            ,page: true //开启分页
-            ,toolbar: '#toolbarDemo' //开启头部工具栏，并为其绑定左侧模板
-            ,defaultToolbar: ['filter', 'exports', 'print']
-            ,totalRow: true //开启合计行
             ,cols: [[ //表头
                 {type: 'checkbox', fixed: 'left'}
-                ,{field: 'id', title: '学号', width:100, sort: true, fixed: 'left', totalRowText: '合计：'}
-                ,{field: 'username', title: '姓名', width:100}
-                ,{field: 'sex', title: '性别', width:80}
-                ,{field: 'college', title: '学院', width: 200}
-                ,{field: 'class', title: '班级', width:100}
-                ,{field: 'email', title: '邮箱', width: 200}
-                ,{field: 'phone', title: '手机号', width: 200}
-                ,{field: 'year', title: '学级', width: 135}
-                ,{fixed: 'right', width: 165, align:'center', toolbar: '#barDemo'}
+                ,{field: 'sid', title: '学号', sort: true, fixed: 'left', totalRowText: '合计：'}
+                ,{field: 'name', title: '姓名'}
+                ,{field: 'scollege', title: '学院'}
+                ,{field: 'smajor', title: '专业'}
+                ,{field: 'semail', title: '邮箱'}
+                ,{field: 'sphone', title: '手机号'}
+                ,{field: 'syear', title: '学级'}
             ]]
-        });
-
-        //分页
-        laypage.render({
-            elem: 'pageDemo' //分页容器的id
-            ,count: 100 //总页数
-            ,skin: '#1E9FFF' //自定义选中色值
-            //,skip: true //开启跳页
-            ,jump: function(obj, first){
-                if(!first){
-                    layer.msg('第'+ obj.curr +'页', {offset: 'b'});
-                }
-            }
         });
 
         //头工具栏事件
