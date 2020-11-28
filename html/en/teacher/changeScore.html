@@ -113,7 +113,7 @@
                 ,{field: 'cid', title: '课程编号'}
                 ,{field: 'susually', title: '平时成绩'}
                 ,{field: 'sfinally', title: '期末成绩'}
-                ,{field: 'spercent', title: '百分制成绩',edit: 'text'}
+                ,{field: 'spercent', title: '百分制成绩'}
                 ,{field: 'srank', title: '等级制成绩'}
                 ,{fixed: 'right', title: '操作', align:'center', toolbar: '#barDemo'}
             ]]
@@ -149,7 +149,7 @@
             } else if(obj.event === 'edit'){
                 layer.prompt({
                     formType: 0
-                    ,title: '请输入要修改的成绩'
+                    ,title: '请输入要修改的百分制成绩'
                     ,value: data.spercent
                 }, function(value, index){
                     //调取信息接口
@@ -163,7 +163,7 @@
                         data:JSON.stringify({
                             cid: data.cid,
                             sid: data.sid,
-                            spercent: data.spercent,
+                            spercent: value,
                         }),
                         //返回值类型
                         dataType:'json',

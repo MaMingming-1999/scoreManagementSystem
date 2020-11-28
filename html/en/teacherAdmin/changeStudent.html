@@ -101,23 +101,28 @@
         table.render({
             elem: '#studentInfo'
             ,height: 420
-            ,url: '/demo/table/user/' //数据接口
+            ,method :'post'
+            ,url: 'http://localhost:8001/demo/student/returnTinfor' //数据接口
             ,title: '用户表'
-            ,page: true //开启分页
+            ,where: {
+                id: "19991112",
+            }
+            ,xhrFields: {withCredentials: true}
+            ,contentType: 'application/json'
+            ,crossDomain: true
+            ,limit: Number.MAX_VALUE // 数据表格默认全部显示
             ,toolbar: '#toolbarDemo' //开启头部工具栏，并为其绑定左侧模板
-            ,defaultToolbar: ['filter', 'exports', 'print']
-            ,totalRow: true //开启合计行
+            ,defaultToolbar: ['filter','print']
             ,cols: [[ //表头
                 {type: 'checkbox', fixed: 'left'}
-                ,{field: 'id', title: '学号', width:100, sort: true, fixed: 'left', totalRowText: '合计：'}
-                ,{field: 'username', title: '姓名', width:100}
-                ,{field: 'sex', title: '性别', width:80}
-                ,{field: 'college', title: '学院', width: 150}
-                ,{field: 'class', title: '班级', width:100}
-                ,{field: 'email', title: '邮箱', width: 150}
-                ,{field: 'phone', title: '手机号', width: 200}
-                ,{field: 'year', title: '学级', width: 135}
-                ,{fixed: 'right', title: '操作',width: 165, align:'center', toolbar: '#barDemo'}
+                ,{field: 'sid', title: '学号', sort: true, fixed: 'left', totalRowText: '合计：'}
+                ,{field: 'name', title: '姓名'}
+                ,{field: 'scollege', title: '学院'}
+                ,{field: 'smajor', title: '班级'}
+                ,{field: 'semail', title: '邮箱'}
+                ,{field: 'sphone', title: '手机号'}
+                ,{field: 'syear', title: '学级'}
+                ,{fixed: 'right', title: '操作', align:'center', toolbar: '#barDemo'}
             ]]
         });
 
@@ -148,11 +153,6 @@
                     break;
                 case 'isAll':
                     layer.msg(checkStatus.isAll ? '全选': '未全选');
-                    break;
-
-                //自定义头工具栏右侧图标 - 提示
-                case 'LAYTABLE_TIPS':
-                    layer.alert('这是工具栏右侧自定义的一个图标按钮');
                     break;
             };
         });

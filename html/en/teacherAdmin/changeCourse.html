@@ -100,21 +100,26 @@
         table.render({
             elem: '#studentInfo'
             ,height: 420
-            ,url: '/demo/table/user/' //数据接口
+            ,method: 'post'
+            ,url: 'http://localhost:8001/demo/course/return/Cinfo' //数据接口
             ,title: '用户表'
-            ,page: true //开启分页
+            ,where: {
+                id: "19991112",
+            }
+            ,xhrFields: {withCredentials: true}
+            ,contentType: 'application/json'
+            ,crossDomain: true
+            ,limit: Number.MAX_VALUE // 数据表格默认全部显示
             ,toolbar: '#toolbarDemo' //开启头部工具栏，并为其绑定左侧模板
-            ,defaultToolbar: ['filter', 'exports', 'print']
-            ,totalRow: true //开启合计行
+            ,defaultToolbar: ['filter', 'print']
             ,cols: [[ //表头
                 {type: 'checkbox', fixed: 'left'}
-                ,{field: 'id', title: '课程编号', width:200, sort: true, fixed: 'left', totalRowText: '合计：'}
-                ,{field: 'name', title: '课程名称', width:200}
-                ,{field: 'college', title: '开设学院', width:200}
-                ,{field: 'grade', title: '开设年级', width:100}
-                ,{field: 'professional', title: '开设专业', width: 200}
-                ,{field: 'credit', title: '课程学分', width: 200}
-                ,{fixed: 'right', title: '操作', width: 165, align:'center', toolbar: '#barDemo'}
+                ,{field: 'cid', title: '课程编号', sort: true, fixed: 'left', totalRowText: '合计：'}
+                ,{field: 'cname', title: '课程名称'}
+                ,{field: 'ccollege', title: '开设学院'}
+                ,{field: 'cyear', title: '开设年级'}
+                ,{field: 'cmajor', title: '开设专业'}
+                ,{fixed: 'right', title: '操作', align:'center', toolbar: '#barDemo'}
             ]]
         });
 

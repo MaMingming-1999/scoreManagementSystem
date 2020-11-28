@@ -164,4 +164,20 @@
 <script src="../../resource/bootstrap-3.3.7-dist/js/bootstrap.js"></script>
 <script src="../../resource/layui-v2.5.6/layui/layui.all.js"></script>
 <script src="../../js/adminCommon.js"></script>
+<script>
+    layui.use('upload', function() {
+        var $ = layui.jquery
+            ,upload = layui.upload;
+        upload.render({
+            elem: '#test3'
+            , url: 'https://httpbin.org/post' //改成您自己的上传接口
+            , accept: 'file' //普通文件
+            ,exts: 'xlsx|xls' //只允许上传excel文件
+            , done: function (res) {
+                layer.msg('上传成功');
+                console.log(res);
+            }
+        });
+    })
+</script>
 </html>

@@ -91,7 +91,6 @@ function submitEnterTeacher(){
         //请求方式post/get
         type:'post',
         contentType:'application/json',
-
         //数据
         data:JSON.stringify({
             aid: '19991112',
