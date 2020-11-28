@@ -138,7 +138,7 @@ public class TeacherController {
     }
 
     @ApiOperation(value = "修改老师邮箱", tags = {CommonConstant.LOGIN_USER})
-    @PostMapping(value = "/update/temail")
+     @PostMapping(value = "/update/temail")
     public ApiResponse updatetemail(
             @RequestBody @Validated UpdatetemailRequest updatetemailRequest
     ) {

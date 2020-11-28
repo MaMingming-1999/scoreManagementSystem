@@ -122,4 +122,21 @@ public class CourseController {
         return ApiResponse.success(courses);
     }
 
+    @ApiOperation(value = "修改课程开设学院", tags = {CommonConstant.LOGIN_USER})
+    @PostMapping(value = "/update/ccollege")
+    public ApiResponse updateccollege(
+            @RequestBody @Validated UpdateccollegeRequest updateccollegeRequest
+    ) {
+        try {
+            courseService.updateccollege(updateccollegeRequest);
+        }
+        catch (BizException e) {
+            logger.error("修改开设学院异常,错误信息:[{}]", e.getErrMessage());
+            return ApiResponse.error(e.getErrMessage());
+        } catch (Exception e) {
+            logger.error("修改开设学院异常", e);
+            return ApiResponse.error(ErrorCodeEnum.SYSTEM_DEFAULT_ERROR);
+        }
+        return ApiResponse.success();
+    }
 }

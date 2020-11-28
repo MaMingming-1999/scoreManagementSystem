@@ -7,6 +7,7 @@ import com.somecoder.demo.common.CommonConstant;
 import com.somecoder.demo.common.ErrorCodeEnum;
 import com.somecoder.demo.common.exception.BizException;
 import com.somecoder.demo.entity.*;
+import com.somecoder.demo.mapper.CourseMapper;
 import com.somecoder.demo.mapper.StudentMapper;
 import com.somecoder.demo.service.IStudentService;
 import io.swagger.annotations.ApiOperation;
@@ -18,6 +19,8 @@ import org.springframework.web.bind.annotation.*;
 import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 /**
  * <p>
@@ -40,6 +43,9 @@ public class StudentController {
 
     @Resource
     StudentMapper studentMapper;
+
+    @Resource
+    CourseMapper courseMapper;
 
     @ApiOperation(value = "学生登陆", tags = {CommonConstant.USER_API_TAG})
     @PostMapping(value = "/login")
@@ -73,6 +79,30 @@ public class StudentController {
                     Wrappers.lambdaQuery(Student.class)
                             .eq(Student::getAid,aIdRequest.getId())
             );
+        } catch (BizException e) {
+            logger.error("获取个人信息异常,错误信息:[{}]", e.getErrMessage());
+            return ApiResponse.error(e.getErrMessage());
+        } catch (Exception e) {
+            logger.error("获取个人信息异常", e);
+            return ApiResponse.error(ErrorCodeEnum.SYSTEM_DEFAULT_ERROR);
+        }
+        return ApiResponse.success(students);
+    }
+
+    @ApiOperation(value = "返回学生信息（教师）", tags = {CommonConstant.USER_API_TAG})
+    @PostMapping(value = "/return/TSinfor")
+    public ApiResponse<List<Student>> getinforTS(
+            @RequestBody TIdRequest tidRequest
+    ) {
+        List<Student> students = new ArrayList<>();
+        try {
+            List<String> s= courseMapper.selectList(
+                    Wrappers.lambdaQuery(Course.class)
+                            .eq(Course::getTid,tidRequest.getTid())
+            ).stream().map(Course::getSid).collect(Collectors.toList());
+            students = studentMapper.selectList(
+                    Wrappers.lambdaQuery(Student.class)
+                            .in(Student::getSid,s));
         } catch (BizException e) {
             logger.error("获取个人信息异常,错误信息:[{}]", e.getErrMessage());
             return ApiResponse.error(e.getErrMessage());

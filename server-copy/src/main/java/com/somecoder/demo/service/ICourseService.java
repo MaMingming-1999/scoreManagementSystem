@@ -3,6 +3,7 @@ package com.somecoder.demo.service;
 import com.somecoder.demo.entity.Course;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.somecoder.demo.entity.StudentRequest;
+import com.somecoder.demo.entity.UpdateccollegeRequest;
 
 /**
  * <p>
@@ -15,4 +16,6 @@ import com.somecoder.demo.entity.StudentRequest;
 public interface ICourseService extends IService<Course> {
 
     void insertcourse(StudentRequest studentcourse);
+
+    void updateccollege(UpdateccollegeRequest updateccollegeRequest);
 }

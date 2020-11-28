@@ -1,8 +1,7 @@
 package com.somecoder.demo.service.impl;
 
-import com.somecoder.demo.entity.Course;
-import com.somecoder.demo.entity.Student;
-import com.somecoder.demo.entity.StudentRequest;
+import com.baomidou.mybatisplus.core.toolkit.Wrappers;
+import com.somecoder.demo.entity.*;
 import com.somecoder.demo.mapper.CourseMapper;
 import com.somecoder.demo.service.ICourseService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -32,5 +31,17 @@ public class CourseServiceImpl extends ServiceImpl<CourseMapper, Course> impleme
 //        Student student = new Student();
 //        student.setAid(studentcourse.getAid());
         courseMapper.insert(course);
+    }
+
+
+    @Override
+    public void updateccollege(UpdateccollegeRequest updateccollegeRequest) {
+        Course course = new Course();
+        course.setCcollege(updateccollegeRequest.getCcollege());
+        courseMapper.update(
+                course,
+                Wrappers.lambdaUpdate(Course.class)
+                        .eq(Course::getCid,updateccollegeRequest.getCid())
+        );
     }
 }
