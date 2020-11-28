@@ -138,4 +138,22 @@ public class StudentController {
         }
         return ApiResponse.success();
     }
+
+    @ApiOperation(value = "修改学生学级", tags = {CommonConstant.LOGIN_USER})
+    @PostMapping(value = "/update/syear")
+    public ApiResponse updatescore(
+            @RequestBody @Validated UpdatesyearRequest updatesyearRequest
+    ) {
+        try {
+            studentService.updatesyear(updatesyearRequest);
+        }
+        catch (BizException e) {
+            logger.error("更新学生学级异常,错误信息:[{}]", e.getErrMessage());
+            return ApiResponse.error(e.getErrMessage());
+        } catch (Exception e) {
+            logger.error("更新学生学级异常", e);
+            return ApiResponse.error(ErrorCodeEnum.SYSTEM_DEFAULT_ERROR);
+        }
+        return ApiResponse.success();
+    }
 }

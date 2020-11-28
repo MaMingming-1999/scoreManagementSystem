@@ -19,4 +19,6 @@ public interface ITeacherService extends IService<Teacher> {
     void insertteacher(TeacherRequest teacherrequest);
 
     void updatetphone(UpdatetphoneRequest updatetphoneRequest);
+
+    void updatetemail(UpdatetemailRequest updatetemailRequest);
 }

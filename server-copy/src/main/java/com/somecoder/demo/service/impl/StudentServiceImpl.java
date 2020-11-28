@@ -75,5 +75,16 @@ public class StudentServiceImpl extends ServiceImpl<StudentMapper, Student> impl
 //        student.setAid(studentcourse.getAid());
         studentMapper.insert(student);
     }
+
+    @Override
+    public void updatesyear(UpdatesyearRequest updatesyearRequest) {
+        Student student = new Student();
+        student.setSyear(updatesyearRequest.getSyear());
+        studentMapper.update(
+                student,
+                Wrappers.lambdaUpdate(Student.class)
+                        .eq(Student::getSid,updatesyearRequest.getSid())
+        );
+    }
 }
 

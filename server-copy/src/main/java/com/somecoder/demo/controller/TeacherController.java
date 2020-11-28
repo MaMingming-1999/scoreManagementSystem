@@ -128,6 +128,24 @@ public class TeacherController {
             teacherService.updatetphone(updatetphoneRequest);
         }
         catch (BizException e) {
+            logger.error("更新老师手机号异常,错误信息:[{}]", e.getErrMessage());
+            return ApiResponse.error(e.getErrMessage());
+        } catch (Exception e) {
+            logger.error("更新老师手机号异常", e);
+            return ApiResponse.error(ErrorCodeEnum.SYSTEM_DEFAULT_ERROR);
+        }
+        return ApiResponse.success();
+    }
+
+    @ApiOperation(value = "修改老师邮箱", tags = {CommonConstant.LOGIN_USER})
+    @PostMapping(value = "/update/temail")
+    public ApiResponse updatetemail(
+            @RequestBody @Validated UpdatetemailRequest updatetemailRequest
+    ) {
+        try {
+            teacherService.updatetemail(updatetemailRequest);
+        }
+        catch (BizException e) {
             logger.error("更新学生成绩异常,错误信息:[{}]", e.getErrMessage());
             return ApiResponse.error(e.getErrMessage());
         } catch (Exception e) {

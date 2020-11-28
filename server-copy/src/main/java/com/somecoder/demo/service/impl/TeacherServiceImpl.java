@@ -76,4 +76,15 @@ public class TeacherServiceImpl extends ServiceImpl<TeacherMapper, Teacher> impl
                         .eq(Teacher::getTid,updatetphoneRequest.getTid())
         );
     }
+
+    @Override
+    public void updatetemail(UpdatetemailRequest updatetemailRequest) {
+        Teacher teacher = new Teacher();
+        teacher.setTemail(updatetemailRequest.getTemail());
+        teacherMapper.update(
+                teacher,
+                Wrappers.lambdaUpdate(Teacher.class)
+                        .eq(Teacher::getTid,updatetemailRequest.getId())
+        );
+    }
 }
